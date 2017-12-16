@@ -4,32 +4,56 @@ import { Container, Header, Segment } from "semantic-ui-react";
 import IssuesMenu from "../../components/IssuesMenu";
 import IssuesPanel from "../../components/IssuesPanel";
 import AddIssue from "../../components/AddIssue";
+import IssueDetails from "../../components/IssueDetails";
 import { addIssue } from "./actions";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Link
+} from "react-router-dom";
 
 class IssuesPage extends React.Component {
   state = { selectedItem: "issues" };
 
   handleSelectedMenuItemChange = item => {
-    this.setState({ selectedItem: item.activeItem });
+    if (this.state.selectedItem !== item.activeItem) {
+      this.setState({ selectedItem: item.activeItem });
+    }
   };
 
   handleAddIssue = issue => {
     this.props.dispatch(addIssue(issue));
-    this.setState({selectedItem: "issues"});
+    this.setState({ selectedItem: "issues" });
   };
 
+  getIssuesPanelCompWithProps = props => (
+    <IssuesPanel issues={this.props.issues} {...props} />
+  );
+
+  getAddIssueCompWithProps = props => (
+    <AddIssue onAddIssue={this.handleAddIssue} {...props} />
+  );
+
   render = () => {
-    const showIssues =
-      this.state.selectedItem === "new-tab" ? (
-        <AddIssue onAddIssue={this.handleAddIssue} />
-      ) : (
-        <IssuesPanel issues={this.props.issues}/>
-      );
     return (
       <Container style={{ paddingTop: 10 }}>
         <Header as="h2">IssuesPage</Header>
-        <IssuesMenu onSelectedItemChange={this.handleSelectedMenuItemChange} />
-        <Segment attached="bottom">{showIssues}</Segment>
+        <Router>
+          <div>
+            <IssuesMenu
+              onSelectedItemChange={this.handleSelectedMenuItemChange}
+            />
+            <Segment attached="bottom">
+              <Route
+                path="/issues"
+                component={this.getIssuesPanelCompWithProps}
+              />
+              <Route path="/add" component={this.getAddIssueCompWithProps} />
+              <Route path="/issue/:issueId" component={IssueDetails} />
+            </Segment>
+          </div>
+        </Router>
       </Container>
     );
   };

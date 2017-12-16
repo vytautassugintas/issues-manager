@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Issue.css";
 import { List, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 class Issue extends React.Component {
   render() {
@@ -10,7 +11,8 @@ class Issue extends React.Component {
         <List.Icon name="github" size="large" verticalAlign="middle" />
         <List.Content>
           <List.Header as="h3">
-            #{issue.id} {issue.title}
+          <Link to={`/issue/${issue.id}`}>#{issue.id} </Link>
+            {issue.title}
           </List.Header>
           <List.Description as="a">{issue.createdAt}</List.Description>
         </List.Content>

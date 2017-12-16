@@ -1,6 +1,7 @@
 import React from "react";
 import "./IssuesMenu.css";
 import { Icon, Menu, Responsive, Input } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 class IssuesMenu extends React.Component {
   state = { activeItem: "home" };
@@ -31,6 +32,8 @@ class IssuesMenu extends React.Component {
           <Responsive as={Input} fluid icon='search' placeholder='Search all issues' maxWidth={768} />
           <Menu.Item
             name="issues"
+            as={Link}
+            to="/issues"
             active={activeItem === "issues"}
             onClick={this.handleItemClick}
           />
@@ -38,6 +41,8 @@ class IssuesMenu extends React.Component {
             <Responsive as={searchBar} minWidth={768} />
             <Menu.Item
               name="new-tab"
+              as={Link}
+              to="/add"
               active={activeItem === "new-tab"}
               onClick={this.handleItemClick}
             >

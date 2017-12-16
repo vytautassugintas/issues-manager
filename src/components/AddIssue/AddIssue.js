@@ -17,6 +17,7 @@ class AddIssue extends React.Component {
       title: "",
       description: ""
     });
+    this.props.history.push("issues")
   };
 
   handleChange = event => {
