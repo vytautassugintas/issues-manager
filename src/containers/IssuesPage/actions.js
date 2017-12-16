@@ -1,6 +1,6 @@
 import { ADD_ISSUE, EDIT_ISSUE, REMOVE_ISSUE } from "./constants";
 
-let nextIssueId = 0;
+let nextIssueId = 1;
 
 export const addIssue = issue => ({
   type: ADD_ISSUE,

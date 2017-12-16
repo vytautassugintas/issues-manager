@@ -7,7 +7,6 @@ import issuesStore from "./store";
 import App from "./App";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
-
 let store = createStore(issuesStore);
 
 render(

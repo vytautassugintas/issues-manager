@@ -2,8 +2,8 @@
 import {combineReducers} from 'redux'
 import issuesReducer from './containers/IssuesPage/reducer';
 
-const moodyStore = combineReducers({
+const issuesStore = combineReducers({
     issuesReducer
 });
 
-export default moodyStore;
+export default issuesStore;
