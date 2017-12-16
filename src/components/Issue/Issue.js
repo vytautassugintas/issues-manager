@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Issue.css";
-import { List, Icon } from "semantic-ui-react";
+import "./Issue.css";
+import { List } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 class Issue extends React.Component {

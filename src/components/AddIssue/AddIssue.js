@@ -1,6 +1,6 @@
 import React from "react";
 import "./AddIssue.css";
-import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
+import { Button, Form, TextArea } from "semantic-ui-react";
 
 class AddIssue extends React.Component {
   state = {

@@ -6,12 +6,7 @@ import IssuesPanel from "../../components/IssuesPanel";
 import AddIssue from "../../components/AddIssue";
 import IssueDetails from "../../components/IssueDetails";
 import { addIssue } from "./actions";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class IssuesPage extends React.Component {
   state = { selectedItem: "issues" };
@@ -24,7 +19,6 @@ class IssuesPage extends React.Component {
 
   handleAddIssue = issue => {
     this.props.dispatch(addIssue(issue));
-    this.setState({ selectedItem: "issues" });
   };
 
   getIssuesPanelCompWithProps = props => (
@@ -62,7 +56,5 @@ class IssuesPage extends React.Component {
 const mapStateToProps = state => ({
   issues: state.issuesReducer
 });
-
-const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps)(IssuesPage);
