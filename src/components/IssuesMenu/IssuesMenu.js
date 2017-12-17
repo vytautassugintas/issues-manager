@@ -28,29 +28,28 @@ class IssuesMenu extends React.Component {
     );
 
     return (
-        <Menu attached="top">
-          <Responsive as={Input} fluid icon='search' placeholder='Search all issues' maxWidth={768} />
+      <Menu attached="top">
+        <Menu.Item
+          name="issues"
+          as={Link}
+          to="/issues"
+          active={activeItem === "issues"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Menu position="right">
+          <Responsive as={searchBar} minWidth={768} />
           <Menu.Item
-            name="issues"
+            name="new-tab"
             as={Link}
-            to="/issues"
-            active={activeItem === "issues"}
+            to="/add"
+            active={activeItem === "new-tab"}
             onClick={this.handleItemClick}
-          />
-          <Menu.Menu position="right">
-            <Responsive as={searchBar} minWidth={768} />
-            <Menu.Item
-              name="new-tab"
-              as={Link}
-              to="/add"
-              active={activeItem === "new-tab"}
-              onClick={this.handleItemClick}
-            >
-              <Icon name="add" />
-              New Issue
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu>
+          >
+            <Icon name="add" />
+            New Issue
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
     );
   };
 }
