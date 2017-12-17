@@ -29,6 +29,10 @@ class IssuesPage extends React.Component {
     <AddIssue onAddIssue={this.handleAddIssue} {...props} />
   );
 
+  getIssuesDetailsCompWithProps = props => (
+    <IssueDetails issues={this.props.issues} {...props} />
+  );
+
   render = () => {
     return (
       <Container style={{ paddingTop: 10 }}>
@@ -44,7 +48,10 @@ class IssuesPage extends React.Component {
                 component={this.getIssuesPanelCompWithProps}
               />
               <Route path="/add" component={this.getAddIssueCompWithProps} />
-              <Route path="/issue/:issueId" component={IssueDetails} />
+              <Route
+                path="/issue/:issueId"
+                component={this.getIssuesDetailsCompWithProps}
+              />
             </Segment>
           </div>
         </Router>
